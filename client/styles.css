@@ -1,0 +1,273 @@
+/* The Jungeon - Styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Courier New', monospace;
+  background-color: #1a1a1a;
+  color: #00ff00;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Left Panel - 2/3 width */
+.left-panel {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  border-right: 2px solid #00ff00;
+}
+
+/* Game Output - 90% height */
+.game-output {
+  flex: 9;
+  overflow-y: auto;
+  padding: 1rem;
+  background-color: #0d0d0d;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.game-output::-webkit-scrollbar {
+  width: 8px;
+}
+
+.game-output::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.game-output::-webkit-scrollbar-thumb {
+  background: #00ff00;
+  border-radius: 4px;
+}
+
+/* Command Input Area - 10% height */
+.command-input-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #262626;
+  border-top: 2px solid #00ff00;
+}
+
+.command-input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  outline: none;
+}
+
+.command-input::placeholder {
+  color: #006600;
+}
+
+/* Right Panel - 1/3 width */
+.right-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #0d0d0d;
+}
+
+.inventory-panel {
+  padding: 1rem;
+}
+
+.inventory-panel h2 {
+  color: #00ff00;
+  margin-bottom: 1rem;
+  font-size: 18px;
+  border-bottom: 1px solid #00ff00;
+  padding-bottom: 0.5rem;
+}
+
+.inventory-content {
+  font-size: 14px;
+}
+
+.inventory-item {
+  margin-bottom: 1rem;
+}
+
+.item-label {
+  display: block;
+  color: #00aa00;
+  margin-bottom: 0.25rem;
+}
+
+.item-value {
+  color: #00ff00;
+  font-weight: bold;
+}
+
+.items-list {
+  list-style: none;
+  padding-left: 0;
+  color: #00ff00;
+}
+
+.items-list li {
+  padding: 0.25rem 0;
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background-color: #1a1a1a;
+  border: 2px solid #00ff00;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 400px;
+}
+
+.modal-content h1 {
+  color: #00ff00;
+  margin-bottom: 1.5rem;
+  font-size: 24px;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #0d0d0d;
+  border: 1px solid #00ff00;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  margin-bottom: 1rem;
+}
+
+.modal-content input:focus {
+  outline: none;
+  border-color: #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.modal-content button {
+  padding: 0.75rem 2rem;
+  background-color: #00ff00;
+  color: #000;
+  border: none;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.modal-content button:hover {
+  background-color: #00cc00;
+}
+
+/* Character List */
+.character-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.character-item {
+  padding: 1rem;
+  background-color: #0d0d0d;
+  border: 1px solid #00ff00;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+}
+
+.character-item:hover {
+  background-color: #1a1a1a;
+  border-color: #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.character-name {
+  font-weight: bold;
+  color: #00ff00;
+  margin-bottom: 0.25rem;
+}
+
+.character-description {
+  color: #00aa00;
+  font-size: 12px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left-panel,
+  .right-panel {
+    flex: 1;
+  }
+
+  .left-panel {
+    border-right: none;
+    border-bottom: 2px solid #00ff00;
+  }
+
+  .modal-content {
+    min-width: 90%;
+  }
+}
+
+/* Message Types */
+.message {
+  margin-bottom: 0.5rem;
+}
+
+.message.system {
+  color: #ffff00;
+}
+
+.message.error {
+  color: #ff0000;
+}
+
+.message.player {
+  color: #00ffff;
+}
+
+.message.room {
+  color: #00ff00;
+}
+
+.message.whisper {
+  color: #ff00ff;
+  font-style: italic;
+}

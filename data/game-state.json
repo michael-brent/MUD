@@ -1,0 +1,86 @@
+{
+  "version": "1.0.0",
+  "lastSaved": "2025-11-16T23:16:41.109Z",
+  "players": {
+    "piXTN9yk2Ft0jsw0AAAB": {
+      "sessionId": "piXTN9yk2Ft0jsw0AAAB",
+      "username": "Jason",
+      "characterId": "char_1",
+      "characterName": "Grimwald the Brave",
+      "currentRoom": "treasure_vault",
+      "inventory": {
+        "gold": 115,
+        "items": []
+      },
+      "status": "active",
+      "connectedAt": "2025-11-16T23:10:27.386Z",
+      "lastAction": "2025-11-16T23:14:05.897Z"
+    },
+    "IWM3efOB_IHGMBVKAAAD": {
+      "sessionId": "IWM3efOB_IHGMBVKAAAD",
+      "username": "Buffy",
+      "characterId": "char_5",
+      "characterName": "Magnus the Wise",
+      "currentRoom": "armory",
+      "inventory": {
+        "gold": 3,
+        "items": []
+      },
+      "status": "active",
+      "connectedAt": "2025-11-16T23:11:41.143Z",
+      "lastAction": "2025-11-16T23:13:06.028Z"
+    }
+  },
+  "characterLocks": {
+    "char_1": {
+      "sessionId": "piXTN9yk2Ft0jsw0AAAB",
+      "username": "Jason",
+      "lockedAt": "2025-11-16T23:10:27.386Z"
+    },
+    "char_5": {
+      "sessionId": "IWM3efOB_IHGMBVKAAAD",
+      "username": "Buffy",
+      "lockedAt": "2025-11-16T23:11:41.143Z"
+    }
+  },
+  "roomStates": {
+    "entrance_hall": {
+      "coins": 0,
+      "objectStates": {
+        "wooden_chest": "closed"
+      },
+      "lastCoinSpawn": "2025-11-16T23:11:40.255Z"
+    },
+    "grand_chamber": {
+      "coins": 0,
+      "objectStates": {},
+      "lastCoinSpawn": "2025-11-16T23:12:57.133Z"
+    },
+    "throne_room": {
+      "coins": 0,
+      "objectStates": {
+        "mysterious_button": "unpressed"
+      },
+      "lastCoinSpawn": null
+    },
+    "armory": {
+      "coins": 0,
+      "objectStates": {
+        "shield_rack": "normal"
+      },
+      "lastCoinSpawn": "2025-11-16T23:12:55.310Z"
+    },
+    "library": {
+      "coins": 15,
+      "objectStates": {
+        "ancient_tome": "closed"
+      },
+      "lastCoinSpawn": null
+    },
+    "treasure_vault": {
+      "coins": 0,
+      "objectStates": {},
+      "lastCoinSpawn": "2025-11-16T23:14:05.897Z"
+    }
+  }
+}

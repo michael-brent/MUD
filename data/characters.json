@@ -1,0 +1,74 @@
+{
+  "characters": [
+    {
+      "id": "char_1",
+      "name": "Grimwald the Brave",
+      "class": "warrior",
+      "description": "A fearless warrior with battle-scarred armor and a mighty sword",
+      "appearance": "A tall, muscular warrior wearing dented plate armor. A massive greatsword hangs from his back."
+    },
+    {
+      "id": "char_2",
+      "name": "Elara Moonwhisper",
+      "class": "elf",
+      "description": "An elegant elven mage with silver hair and mystical robes",
+      "appearance": "A graceful elf with flowing silver hair and shimmering blue robes. Her eyes glow with ancient wisdom."
+    },
+    {
+      "id": "char_3",
+      "name": "Thorin Ironfoot",
+      "class": "dwarf",
+      "description": "A stout dwarf with a magnificent beard and sturdy mining gear",
+      "appearance": "A stocky dwarf with a braided crimson beard and heavy iron boots. A pickaxe rests on his shoulder."
+    },
+    {
+      "id": "char_4",
+      "name": "Zara the Swift",
+      "class": "rogue",
+      "description": "A nimble rogue dressed in dark leather with countless hidden daggers",
+      "appearance": "A lithe figure in black leather armor, face partially obscured by a hood. Daggers glint at her belt."
+    },
+    {
+      "id": "char_5",
+      "name": "Magnus the Wise",
+      "class": "wizard",
+      "description": "An ancient wizard with a long white beard and staff crackling with energy",
+      "appearance": "An elderly wizard in star-patterned robes, leaning on a gnarled staff that pulses with arcane power."
+    },
+    {
+      "id": "char_6",
+      "name": "Lyra Brightblade",
+      "class": "paladin",
+      "description": "A noble paladin in shining armor wielding a sword of pure light",
+      "appearance": "A radiant warrior in pristine silver armor. Her sword glows with holy light, and a divine aura surrounds her."
+    },
+    {
+      "id": "char_7",
+      "name": "Shadow",
+      "class": "mysterious",
+      "description": "A mysterious figure shrouded in darkness, identity unknown",
+      "appearance": "A dark silhouette wrapped in shadows. No features can be discerned, only a vague humanoid shape."
+    },
+    {
+      "id": "char_8",
+      "name": "Finn the Lucky",
+      "class": "halfling",
+      "description": "A cheerful halfling with a mischievous grin and lucky coin",
+      "appearance": "A small, jovial halfling with curly hair and bare feet. He constantly flips a golden coin."
+    },
+    {
+      "id": "char_9",
+      "name": "Raven Nightshade",
+      "class": "sorceress",
+      "description": "A dark sorceress with violet eyes and robes of midnight black",
+      "appearance": "A striking woman in flowing black robes adorned with silver runes. Her violet eyes seem to pierce through reality itself."
+    },
+    {
+      "id": "char_10",
+      "name": "Boulder",
+      "class": "half-orc",
+      "description": "A massive half-orc with green skin and tremendous strength",
+      "appearance": "An imposing half-orc with green-gray skin and tusks. His muscular frame dwarfs most other adventurers."
+    }
+  ]
+}

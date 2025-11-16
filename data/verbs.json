@@ -1,0 +1,93 @@
+{
+  "actionVerbs": [
+    {
+      "verb": "dance",
+      "template": "{name} dances gracefully."
+    },
+    {
+      "verb": "jump",
+      "template": "{name} jumps up and down excitedly."
+    },
+    {
+      "verb": "smile",
+      "template": "{name} smiles warmly."
+    },
+    {
+      "verb": "burp",
+      "template": "{name} lets out a loud burp."
+    },
+    {
+      "verb": "sneeze",
+      "template": "{name} sneezes loudly. Achoo!"
+    },
+    {
+      "verb": "cough",
+      "template": "{name} coughs awkwardly."
+    },
+    {
+      "verb": "laugh",
+      "template": "{name} laughs heartily."
+    },
+    {
+      "verb": "bow",
+      "template": "{name} bows respectfully."
+    },
+    {
+      "verb": "wave",
+      "template": "{name} waves cheerfully."
+    },
+    {
+      "verb": "nod",
+      "template": "{name} nods in agreement."
+    },
+    {
+      "verb": "shrug",
+      "template": "{name} shrugs indifferently."
+    },
+    {
+      "verb": "cheer",
+      "template": "{name} cheers enthusiastically!"
+    },
+    {
+      "verb": "cry",
+      "template": "{name} cries sadly."
+    },
+    {
+      "verb": "yawn",
+      "template": "{name} yawns sleepily."
+    },
+    {
+      "verb": "stretch",
+      "template": "{name} stretches languidly."
+    },
+    {
+      "verb": "flex",
+      "template": "{name} flexes their muscles impressively."
+    },
+    {
+      "verb": "spin",
+      "template": "{name} spins around in a circle."
+    },
+    {
+      "verb": "clap",
+      "template": "{name} claps their hands together."
+    },
+    {
+      "verb": "whistle",
+      "template": "{name} whistles a cheerful tune."
+    },
+    {
+      "verb": "sigh",
+      "template": "{name} sighs deeply."
+    }
+  ],
+  "interactionVerbs": [
+    "touch",
+    "open",
+    "press",
+    "pull",
+    "push",
+    "examine",
+    "read"
+  ]
+}

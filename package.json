@@ -1,0 +1,27 @@
+{
+  "name": "the-jungeon",
+  "version": "1.0.0",
+  "description": "Multi-user text-based dungeon game with real-time player interaction",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michael-brent/MUD.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/michael-brent/MUD/issues"
+  },
+  "homepage": "https://github.com/michael-brent/MUD#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "socket.io": "^4.8.1"
+  }
+}

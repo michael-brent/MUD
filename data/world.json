@@ -1,0 +1,192 @@
+{
+  "rooms": {
+    "entrance_hall": {
+      "id": "entrance_hall",
+      "name": "The Entrance Hall",
+      "description": "You stand in a grand entrance hall with vaulted ceilings. Torches flicker on the stone walls, casting dancing shadows. A large wooden door stands to the north, while passages lead east and west.",
+      "exits": {
+        "north": {
+          "to": "grand_chamber",
+          "type": "open"
+        },
+        "east": {
+          "to": "armory",
+          "type": "open"
+        },
+        "west": {
+          "to": "library",
+          "type": "locked",
+          "requiredItem": "brass_key",
+          "unlockMessage": "You insert the brass key and hear a satisfying click. The door to the library swings open."
+        }
+      },
+      "objects": [
+        {
+          "id": "wooden_chest",
+          "name": "wooden chest",
+          "description": "An old wooden chest sits in the corner, covered in dust.",
+          "state": "closed",
+          "interactions": {
+            "open": {
+              "validStates": ["closed"],
+              "newState": "opened",
+              "message": "You open the wooden chest with a creak. Inside, you find a brass key!",
+              "giveItem": "brass_key"
+            }
+          }
+        }
+      ],
+      "coins": {
+        "spawnType": "initial-only",
+        "amount": 10
+      }
+    },
+    "grand_chamber": {
+      "id": "grand_chamber",
+      "name": "The Grand Chamber",
+      "description": "A magnificent chamber with marble columns reaching toward the ceiling. Ancient tapestries depicting legendary battles line the walls. Exits lead south and east.",
+      "exits": {
+        "south": {
+          "to": "entrance_hall",
+          "type": "open"
+        },
+        "east": {
+          "to": "throne_room",
+          "type": "open"
+        }
+      },
+      "objects": [],
+      "coins": {
+        "spawnType": "respawn-timer",
+        "amount": 5,
+        "respawnInterval": 300000
+      }
+    },
+    "throne_room": {
+      "id": "throne_room",
+      "name": "The Throne Room",
+      "description": "An ornate throne room with a massive stone throne at the far end. The throne is empty, but you sense great power once resided here. A passage leads west, and stairs descend to the south.",
+      "exits": {
+        "west": {
+          "to": "grand_chamber",
+          "type": "open"
+        },
+        "south": {
+          "to": "armory",
+          "type": "open"
+        },
+        "down": {
+          "to": "treasure_vault",
+          "type": "open"
+        }
+      },
+      "objects": [
+        {
+          "id": "mysterious_button",
+          "name": "mysterious button",
+          "description": "A red button is embedded in the arm of the throne.",
+          "state": "unpressed",
+          "interactions": {
+            "press": {
+              "validStates": ["unpressed"],
+              "newState": "pressed",
+              "message": "You press the button. A hidden compartment opens in the throne, revealing 25 gold coins!",
+              "spawnCoins": 25
+            }
+          }
+        }
+      ],
+      "coins": {
+        "spawnType": "player-drops",
+        "amount": 0
+      }
+    },
+    "armory": {
+      "id": "armory",
+      "name": "The Armory",
+      "description": "Weapon racks line the walls of this room, though most are empty. A few rusty swords and shields remain. Exits lead west and north.",
+      "exits": {
+        "west": {
+          "to": "entrance_hall",
+          "type": "open"
+        },
+        "north": {
+          "to": "throne_room",
+          "type": "open"
+        }
+      },
+      "objects": [
+        {
+          "id": "shield_rack",
+          "name": "shield rack",
+          "description": "A rack holding several dusty shields.",
+          "state": "normal",
+          "interactions": {
+            "touch": {
+              "validStates": ["normal"],
+              "newState": "normal",
+              "message": "You touch the shield rack. Nothing happens, but you notice intricate engravings on one of the shields."
+            }
+          }
+        }
+      ],
+      "coins": {
+        "spawnType": "initial-only",
+        "amount": 3
+      }
+    },
+    "library": {
+      "id": "library",
+      "name": "The Ancient Library",
+      "description": "Towering bookshelves filled with dusty tomes surround you. The air smells of old parchment and forgotten knowledge. The only exit is east, back to the entrance hall.",
+      "exits": {
+        "east": {
+          "to": "entrance_hall",
+          "type": "open"
+        }
+      },
+      "objects": [
+        {
+          "id": "ancient_tome",
+          "name": "ancient tome",
+          "description": "A large leather-bound book sits on a reading pedestal.",
+          "state": "closed",
+          "interactions": {
+            "open": {
+              "validStates": ["closed"],
+              "newState": "opened",
+              "message": "You carefully open the ancient tome. The pages contain cryptic writings about a hidden treasure vault beneath the throne room."
+            },
+            "read": {
+              "validStates": ["opened"],
+              "newState": "opened",
+              "message": "The text speaks of great riches hidden below, accessible only from the throne room."
+            }
+          }
+        }
+      ],
+      "coins": {
+        "spawnType": "respawn-timer",
+        "amount": 15,
+        "respawnInterval": 600000
+      }
+    },
+    "treasure_vault": {
+      "id": "treasure_vault",
+      "name": "The Treasure Vault",
+      "description": "You've discovered the legendary treasure vault! Piles of gold coins glitter in the torchlight. The only exit is up, back to the throne room.",
+      "exits": {
+        "up": {
+          "to": "throne_room",
+          "type": "open"
+        }
+      },
+      "objects": [],
+      "coins": {
+        "spawnType": "initial-only",
+        "amount": 100
+      }
+    }
+  },
+  "startingRoom": "entrance_hall"
+}
