@@ -11,6 +11,7 @@ const path = require('path');
 const stateManager = require('./state-manager');
 const gameEngine = require('./game-engine');
 const WebSocketHandler = require('./websocket-handler');
+const ghostManager = require('./utils/ghost-manager');
 
 const app = express();
 const httpServer = createServer(app);
@@ -33,7 +34,7 @@ async function initializeServer() {
 
     // Load game data
     console.log('Loading game data...');
-    const worldData = await stateManager.loadWorldData();
+    const worldData = await stateManager.loadOrGenerateWorld();
     const characterData = await stateManager.loadCharacterData();
     const verbData = await stateManager.loadVerbData();
 
@@ -49,6 +50,12 @@ async function initializeServer() {
     console.log('Initializing WebSocket handler...');
     const wsHandler = new WebSocketHandler(io);
     wsHandler.initialize();
+
+    // Initialize ghosts
+    console.log('Initializing ghost system...');
+    const currentGameState = gameEngine.getGameState();
+    ghostManager.initialize(worldData.rooms, currentGameState);
+    ghostManager.startMovement(worldData.rooms, currentGameState, io);
 
     // Start autosave
     console.log('Starting autosave...');
@@ -68,6 +75,9 @@ async function initializeServer() {
 // Graceful shutdown
 function gracefulShutdown() {
   console.log('\nShutting down The Jungeon server...');
+
+  // Stop ghost movement
+  ghostManager.stopMovement();
 
   // Stop autosave
   stateManager.stopAutosave();

@@ -25,6 +25,7 @@ class CommandParser {
       // System
       help: this.parseSimple,
       look: this.parseSimple,
+      map: this.parseSimple,
     };
   }
 
@@ -52,6 +53,12 @@ class CommandParser {
     const parts = lowerTrimmed.split(/\s+/);
     const command = parts[0];
     const args = parts.slice(1);
+
+    // Check if command is a direction shortcut (n, s, e, w, etc.)
+    const directionShortcuts = ['n', 's', 'e', 'w', 'u', 'd', 'north', 'south', 'east', 'west', 'up', 'down'];
+    if (directionShortcuts.includes(command)) {
+      return this.parseMovement([command]);
+    }
 
     // Special handling for 'say' to preserve case
     if (command === 'say') {

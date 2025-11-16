@@ -4,6 +4,8 @@
 
 const RoomUtils = require('./utils/room-utils');
 const coinSpawner = require('./utils/coin-spawner');
+const ghostManager = require('./utils/ghost-manager');
+const minimapGenerator = require('./utils/minimap-generator');
 
 class GameEngine {
   constructor() {
@@ -166,9 +168,13 @@ class GameEngine {
     const newRoom = this.rooms[destinationRoomId];
     const description = RoomUtils.generateDescription(newRoom, this.gameState.players, this.gameState);
 
+    // Check for ghost encounter
+    const ghostEncounter = ghostManager.checkEncounter(player, destinationRoomId, this.gameState);
+
     return {
       success: true,
-      description
+      description,
+      ghostEncounter
     };
   }
 
@@ -415,15 +421,28 @@ class GameEngine {
    */
   getHelpText() {
     const commands = [
-      'go [direction] - Move in a direction (north, south, east, west, up, down)',
-      'look - Look around the current room',
-      'collect - Collect all coins in the room',
-      'drop - Drop all your coins in the room',
-      'inventory - View your inventory',
-      '[verb] [object] - Interact with an object (touch, open, press)',
-      'say [message] - Say something to players in the room',
-      '/[action] - Perform an action (/dance, /wave, /bow, etc.)',
-      'help - Show this help message'
+      'Movement:',
+      '  go [direction] - Move in a direction (north, south, east, west)',
+      '  n/s/e/w - Quick directional shortcuts',
+      '',
+      'Exploration:',
+      '  look - Look around the current room',
+      '  map - Display 5x5 ASCII minimap',
+      '',
+      'Items & Gold:',
+      '  collect - Collect all coins in the room',
+      '  drop - Drop all your coins in the room',
+      '  inventory - View your inventory',
+      '',
+      'Interaction:',
+      '  [verb] [object] - Interact with an object (touch, open, press)',
+      '',
+      'Communication:',
+      '  say [message] - Say something to players in the room',
+      '  /[action] - Perform an action (/dance, /wave, /bow, etc.)',
+      '',
+      'System:',
+      '  help - Show this help message'
     ];
 
     const verbs = this.verbs.actionVerbs.map(v => v.verb);
@@ -431,6 +450,32 @@ class GameEngine {
     return {
       commands,
       verbs
+    };
+  }
+
+  /**
+   * Get minimap for player
+   */
+  getMinimap(sessionId) {
+    const player = this.players.get(sessionId);
+    if (!player) {
+      return { success: false, error: 'Player not found' };
+    }
+
+    const currentRoom = this.rooms[player.currentRoom];
+    if (!currentRoom) {
+      return { success: false, error: 'Current room not found' };
+    }
+
+    const minimap = minimapGenerator.generateWithState(
+      currentRoom,
+      this.rooms,
+      this.gameState
+    );
+
+    return {
+      success: true,
+      minimap
     };
   }
 

@@ -4,6 +4,10 @@
 
 const fs = require('fs').promises;
 const path = require('path');
+const mapGenerator = require('./utils/map-generator');
+const goldDistributor = require('./utils/gold-distributor');
+const itemGenerator = require('./utils/item-generator');
+const lockManager = require('./utils/lock-manager');
 
 const STATE_FILE = path.join(__dirname, '../data/game-state.json');
 const AUTOSAVE_INTERVAL = 30000; // 30 seconds
@@ -126,6 +130,49 @@ class StateManager {
     } catch (error) {
       console.error('Error loading world data:', error.message);
       throw new Error('Failed to load world data');
+    }
+  }
+
+  /**
+   * Generate procedural world data (100-room dungeon)
+   */
+  async generateProceduralWorld() {
+    console.log('Generating procedural 100-room dungeon...');
+
+    // Generate 100-room map
+    const { rooms, startingRoom } = mapGenerator.generate();
+
+    // Distribute gold across rooms
+    goldDistributor.distribute(rooms);
+
+    // Distribute items across rooms
+    itemGenerator.distribute(rooms);
+
+    // Add locked doors and keys
+    lockManager.addLocksAndKeys(rooms);
+
+    console.log('Procedural world generation complete!');
+
+    return {
+      rooms,
+      startingRoom,
+      name: 'Procedural Dungeon',
+      description: 'A vast, mysterious dungeon generated from the depths of chaos.'
+    };
+  }
+
+  /**
+   * Load or generate world data
+   * For REQ-3, we use procedural generation
+   */
+  async loadOrGenerateWorld() {
+    // Check if we should use procedural generation
+    const useProceduralGen = process.env.USE_PROCEDURAL === 'true' || true;
+
+    if (useProceduralGen) {
+      return await this.generateProceduralWorld();
+    } else {
+      return await this.loadWorldData();
     }
   }
 

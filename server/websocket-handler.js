@@ -155,6 +155,29 @@ class WebSocketHandler {
         result = gameEngine.movePlayer(socket.id, parsed.direction);
         if (result.success) {
           socket.emit('room_description', result.description);
+
+          // Handle ghost encounter
+          if (result.ghostEncounter) {
+            const encounter = result.ghostEncounter;
+            if (encounter.type === 'encounter') {
+              socket.emit('private_message', {
+                message: `${encounter.message}\nYou lost ${encounter.goldLost} gold! (${encounter.goldRemaining} remaining)`
+              });
+              // Update inventory to reflect gold loss
+              const player = gameEngine.players.get(socket.id);
+              if (player) {
+                socket.emit('inventory_update', player.inventory);
+              }
+            } else if (encounter.type === 'observation') {
+              socket.emit('private_message', {
+                message: encounter.message
+              });
+            } else if (encounter.type === 'encounter_no_gold') {
+              socket.emit('private_message', {
+                message: encounter.message
+              });
+            }
+          }
         } else {
           socket.emit('error', { message: result.error });
         }
@@ -206,6 +229,15 @@ class WebSocketHandler {
         const description = gameEngine.getRoomDescription(socket.id);
         if (description) {
           socket.emit('room_description', description);
+        }
+        break;
+
+      case 'map':
+        result = gameEngine.getMinimap(socket.id);
+        if (result.success) {
+          socket.emit('private_message', { message: result.minimap });
+        } else {
+          socket.emit('error', { message: result.error });
         }
         break;
 
